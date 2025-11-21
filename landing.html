@@ -1,18 +1,33 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html class="light" lang="id">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>JalaKU - Ikan Segar Langsung dari Nelayan</title>
+
+    <!-- SEO basic -->
+    <meta
+      name="description"
+      content="JalaKU menghubungkan konsumen dengan nelayan lokal untuk membeli ikan segar langsung dari sumbernya dengan harga yang adil dan transparansi penuh."
+    />
+
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
       rel="stylesheet"
     />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="./logoJalaku.jpg" />
+
+    <!-- Tailwind Config -->
     <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -39,9 +54,15 @@
         },
       };
     </script>
+
     <style>
       .material-symbols-outlined {
         font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+
+      /* Smooth scroll untuk nav */
+      html {
+        scroll-behavior: smooth;
       }
     </style>
   </head>
@@ -52,97 +73,185 @@
       class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden"
     >
       <div class="layout-container flex h-full grow flex-col">
+        <!-- HEADER -->
         <header
-          class="sticky top-0 z-50 w-full bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm"
+          class="sticky top-0 z-50 w-full bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700"
         >
           <div class="px-4 sm:px-10 lg:px-20 mx-auto">
-            <div
-              class="flex items-center justify-between whitespace-nowrap border-b border-gray-200 dark:border-gray-700 py-3"
-            >
-              <!-- LOGO + NAMA BRAND -->
-              <div class="flex items-center gap-4">
-                <!-- Ganti SVG dengan gambar logoJalaku.jpg -->
+            <div class="flex items-center justify-between py-3 gap-4">
+              <!-- Logo + Title -->
+              <a href="#home" class="flex items-center gap-3 shrink-0">
                 <img
-                  src="logoJalaku.jpg"
+                  src="./logoJalaku.jpg"
                   alt="Logo JalaKU"
-                  class="h-10 w-auto"
+                  class="h-8 w-auto rounded-md object-contain"
                 />
-                <h2
-                  class="text-text-light dark:text-text-dark text-xl font-bold leading-tight tracking-[-0.015em]"
+                <h1
+                  class="text-text-light dark:text-text-dark text-xl font-bold leading-tight tracking-[-0.02em]"
                 >
                   JalaKU
-                </h2>
-              </div>
+                </h1>
+              </a>
 
-              <nav class="hidden md:flex items-center gap-9">
+              <!-- Desktop Nav -->
+              <nav class="hidden md:flex items-center gap-8">
                 <a
                   class="text-text-light dark:text-text-dark text-sm font-medium leading-normal hover:text-primary dark:hover:text-secondary"
                   href="#features"
-                  >Features</a
+                  >Fitur</a
                 >
                 <a
                   class="text-text-light dark:text-text-dark text-sm font-medium leading-normal hover:text-primary dark:hover:text-secondary"
                   href="#advantages"
-                  >Advantages</a
+                  >Keunggulan</a
                 >
                 <a
                   class="text-text-light dark:text-text-dark text-sm font-medium leading-normal hover:text-primary dark:hover:text-secondary"
                   href="#team"
-                  >Team</a
+                  >Tim</a
                 >
                 <a
                   class="text-text-light dark:text-text-dark text-sm font-medium leading-normal hover:text-primary dark:hover:text-secondary"
                   href="#contact"
-                  >Contact</a
+                  >Kontak</a
                 >
               </nav>
-              <button
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90"
-              >
-                <span class="truncate">Download App</span>
-              </button>
+
+              <div class="flex items-center gap-3">
+                <!-- Mode Toggle -->
+                <button
+                  id="themeToggle"
+                  aria-label="Toggle dark mode"
+                  class="flex items-center justify-center h-9 w-9 rounded-full border border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+                >
+                  <span class="material-symbols-outlined text-base">
+                    dark_mode
+                  </span>
+                </button>
+
+                <!-- Download Button -->
+                <a
+                  href="#contact"
+                  class="hidden sm:inline-flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90"
+                >
+                  <span class="truncate">Download App</span>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button
+                  id="mobileMenuButton"
+                  class="inline-flex md:hidden items-center justify-center h-10 w-10 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+                  aria-label="Buka menu"
+                >
+                  <span class="material-symbols-outlined"> menu </span>
+                </button>
+              </div>
             </div>
+
+            <!-- Mobile Nav -->
+            <nav id="mobileMenu" class="md:hidden hidden flex-col gap-2 pb-3">
+              <a
+                class="block py-2 text-sm font-medium text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary"
+                href="#features"
+                >Fitur</a
+              >
+              <a
+                class="block py-2 text-sm font-medium text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary"
+                href="#advantages"
+                >Keunggulan</a
+              >
+              <a
+                class="block py-2 text-sm font-medium text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary"
+                href="#team"
+                >Tim</a
+              >
+              <a
+                class="block py-2 text-sm font-medium text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary"
+                href="#contact"
+                >Kontak</a
+              >
+              <a
+                href="#contact"
+                class="mt-2 flex w-full cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold tracking-[0.015em] hover:bg-opacity-90"
+              >
+                Download App
+              </a>
+            </nav>
           </div>
         </header>
-        <main>
-          <div
+
+        <!-- MAIN -->
+        <main id="home">
+          <!-- HERO -->
+          <section
             class="relative flex min-h-[calc(100vh-65px)] flex-col items-center justify-center bg-cover bg-center bg-no-repeat p-4"
-            data-alt="A fishing boat on a calm sea at sunrise"
+            aria-label="JalaKU Hero Section"
             style="
               background-image: linear-gradient(
-                  rgba(0, 0, 0, 0.2) 0%,
-                  rgba(0, 0, 0, 0.5) 100%
+                  rgba(0, 0, 0, 0.35) 0%,
+                  rgba(0, 0, 0, 0.7) 100%
                 ),
                 url('https://lh3.googleusercontent.com/aida-public/AB6AXuBTkR_DX8cwspz_M8ifMpobhGnDQGoFZY8Y5sdurOVBTEtcJ3zEJhyg9kBBwlxoWYPYaWQUJb1xcRulAuiNPq0ikufHnXAIpDA9d6YZf5zhe48_EpqFyDXDGv3onqFWDpuCpwrzSrPgNhVWxxKabUPf7OxQOv3MKYRWb5Pw59pJzlvt07sJcVk5PACU9hkxl37wLIf7fKwRMa_aA2tCUniHwfexv17bDGwPDPlUgKQAciPf_aI_IeuB4otYrAx5kE7B0t94vXvjOHE');
             "
           >
             <div class="flex flex-col gap-6 text-center max-w-3xl">
-              <h1
+              <span
+                class="inline-flex mx-auto items-center gap-2 rounded-full bg-white/15 px-4 py-1 text-xs text-white backdrop-blur-sm border border-white/30"
+              >
+                <span class="material-symbols-outlined text-sm"> waves </span>
+                <span>Mendukung Nelayan Lokal · Ikan Segar Terjamin</span>
+              </span>
+
+              <h2
                 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl"
               >
                 Ikan Segar Langsung dari Perahu Nelayan ke Meja Anda
-              </h1>
-              <h2
+              </h2>
+
+              <p
                 class="text-white text-base font-normal leading-normal md:text-lg"
               >
-                Mendukung nelayan lokal sambil menikmati hasil laut segar
-                berkualitas tinggi dengan transparansi penuh dari laut ke meja
-                makan.
-              </h2>
+                JalaKU menghubungkan Anda langsung dengan nelayan lokal,
+                memastikan kesegaran tinggi, harga yang adil, dan proses yang
+                transparan dari laut hingga meja makan.
+              </p>
+
               <div class="flex flex-wrap gap-3 justify-center">
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90"
+                <a
+                  href="#contact"
+                  class="flex min-w-[140px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90"
                 >
                   <span class="truncate">Unduh Aplikasi</span>
-                </button>
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark text-base font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90"
+                </a>
+                <a
+                  href="#why"
+                  class="flex min-w-[140px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-background-light/90 dark:bg-background-dark/80 text-text-light dark:text-text-dark text-base font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 border border-white/30"
                 >
                   <span class="truncate">Pelajari Lebih Lanjut</span>
-                </button>
+                </a>
+              </div>
+
+              <!-- Small stats -->
+              <div
+                class="mt-4 grid grid-cols-2 md:grid-cols-3 gap-4 text-white/90 text-sm"
+              >
+                <div class="flex flex-col">
+                  <span class="font-bold text-lg">50+</span>
+                  <span>Nelayan terdaftar</span>
+                </div>
+                <div class="flex flex-col">
+                  <span class="font-bold text-lg">1.000kg</span>
+                  <span>Ikan segar terjual</span>
+                </div>
+                <div class="flex flex-col md:col-span-1 col-span-2">
+                  <span class="font-bold text-lg">100%</span>
+                  <span>Transparansi asal tangkapan</span>
+                </div>
               </div>
             </div>
-          </div>
+          </section>
+
+          <!-- WHY -->
           <section class="px-4 sm:px-10 lg:px-20 py-16 sm:py-24" id="why">
             <div class="max-w-4xl mx-auto text-center">
               <h2
@@ -155,24 +264,26 @@
               >
                 Nelayan sering tertekan oleh harga jual yang rendah dan minimnya
                 informasi keselamatan. Di sisi lain, konsumen kesulitan
-                mendapatkan ikan yang benar-benar segar. Kami memotong rantai
+                mendapatkan ikan yang benar-benar segar. JalaKU memotong rantai
                 distribusi yang panjang, menghubungkan Anda langsung dengan
                 nelayan untuk memastikan kesegaran, harga yang adil, dan
                 keamanan yang terjamin.
               </p>
             </div>
           </section>
+
+          <!-- FEATURES -->
           <section
             class="px-4 sm:px-10 lg:px-20 py-16 sm:py-24 bg-white dark:bg-background-dark/50"
             id="features"
           >
             <div class="max-w-5xl mx-auto">
               <div class="text-center mb-12">
-                <h1
+                <h2
                   class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight md:text-4xl"
                 >
                   Fitur Utama Kami
-                </h1>
+                </h2>
                 <p
                   class="text-text-light dark:text-text-dark text-lg font-normal leading-normal mt-4 max-w-3xl mx-auto"
                 >
@@ -181,18 +292,19 @@
                 </p>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
                 <div
-                  class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-background-dark p-6 text-center items-center"
+                  class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-background-dark p-6 text-center items-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition"
                 >
                   <span
                     class="material-symbols-outlined text-primary dark:text-secondary text-4xl"
                     >storefront</span
                   >
-                  <h2
+                  <h3
                     class="text-text-light dark:text-text-dark text-xl font-bold leading-tight"
                   >
                     JalaKU Jual-Beli
-                  </h2>
+                  </h3>
                   <p
                     class="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal"
                   >
@@ -200,18 +312,20 @@
                     ikan segar langsung dari nelayan.
                   </p>
                 </div>
+
+                <!-- Card 2 -->
                 <div
-                  class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-background-dark p-6 text-center items-center"
+                  class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-background-dark p-6 text-center items-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition"
                 >
                   <span
                     class="material-symbols-outlined text-primary dark:text-secondary text-4xl"
                     >pin_drop</span
                   >
-                  <h2
+                  <h3
                     class="text-text-light dark:text-text-dark text-xl font-bold leading-tight"
                   >
                     JalaKU Lacak
-                  </h2>
+                  </h3>
                   <p
                     class="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal"
                   >
@@ -219,18 +333,20 @@
                     tangan Anda untuk transparansi penuh.
                   </p>
                 </div>
+
+                <!-- Card 3 -->
                 <div
-                  class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-background-dark p-6 text-center items-center"
+                  class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-background-dark p-6 text-center items-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition"
                 >
                   <span
                     class="material-symbols-outlined text-primary dark:text-secondary text-4xl"
                     >health_and_safety</span
                   >
-                  <h2
+                  <h3
                     class="text-text-light dark:text-text-dark text-xl font-bold leading-tight"
                   >
                     JalaKU Selamat
-                  </h2>
+                  </h3>
                   <p
                     class="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal"
                   >
@@ -242,6 +358,8 @@
               </div>
             </div>
           </section>
+
+          <!-- ADVANTAGES -->
           <section
             class="px-4 sm:px-10 lg:px-20 py-16 sm:py-24"
             id="advantages"
@@ -257,7 +375,9 @@
                   >
                     Transparansi, Dampak Sosial, dan Keamanan
                   </h2>
-                  <p class="text-text-light dark:text-text-dark mt-4">
+                  <p
+                    class="text-text-light dark:text-text-dark mt-4 leading-relaxed"
+                  >
                     Kami menawarkan lebih dari sekadar ikan segar. Kami
                     membangun ekosistem yang adil dan aman. Dengan JalaKU, Anda
                     mendapatkan harga dan sumber yang jelas, turut memberdayakan
@@ -268,18 +388,19 @@
                 <div class="order-1 md:order-2">
                   <img
                     class="rounded-xl object-cover w-full h-80"
-                    data-alt="A smiling fisherman holding up a fresh fish on his boat"
+                    alt="Nelayan tersenyum sambil memegang ikan segar di atas perahu"
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNAN2xjNm73m4ukoxW687u2BMth15b8KpzUw5NxAyHOMm1xyrttd7eBunQZKiT5cBAFrIvapRpCHIuUWTI8tD4tuQNCI9x1OhoDw2dGLCOMJzXggX0-coxXw1cEAHqsGdOk0FyP8zphQzTsmShTyF34TyuHKuw07BEESD-0C3WN0xlEgx-gO58qaDAsRE1oGvHpQODCTjpR9o-vQDhKl3AzD9UwAIvxJlvEravNzTB-A5CaC05sZI2Ha3SFEhS_-HmadRMVnoDLrk"
                   />
                 </div>
               </div>
+
               <div
                 class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16"
               >
                 <div>
                   <img
                     class="rounded-xl object-cover w-full h-80"
-                    data-alt="A smartphone showing a map with a GPS tracking route, representing the fish journey tracking feature"
+                    alt="Tampilan peta pada smartphone yang menunjukkan rute pelacakan perjalanan ikan"
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL763wkvy_EyNZ4ZHCSrDSFKvkYHP-FXHl3C3BRex96SX3q-mPL9p60IYn3WsVqEpxvLzFqcnV_-rk26C0T06lyRipVXL-PSStvwc6Robf4qyr0QtXMBdMzilxMrzXvf6b8DUSyB-zAC88g-zCkdsivGmmmSRAH0H0hR-My-XPuXzTJAWmCdQOMT3CMb5kQOXmY3JBK_6QBzHjz9Wf3Tf7RXzviGITi5R2JH1nhra1JN1snZNCAqZV2NnDsB09J1PphC_571gYDfM"
                   />
                 </div>
@@ -292,11 +413,13 @@
                   >
                     Menghubungkan Pembeli dan Mitra Nelayan
                   </h2>
-                  <p class="text-text-light dark:text-text-dark mt-4">
-                    <b>Pembeli:</b> Ibu rumah tangga yang menginginkan yang
-                    terbaik untuk keluarga, koki profesional, dan pemilik
-                    restoran yang mengutamakan kualitas bahan baku.<br /><b
-                      >Mitra:</b
+                  <p
+                    class="text-text-light dark:text-text-dark mt-4 leading-relaxed"
+                  >
+                    <strong>Pembeli:</strong> Ibu rumah tangga yang menginginkan
+                    yang terbaik untuk keluarga, koki profesional, dan pemilik
+                    restoran yang mengutamakan kualitas bahan baku.<br /><strong
+                      >Mitra:</strong
                     >
                     Nelayan tradisional dan modern, serta koperasi nelayan yang
                     ingin menjangkau pasar lebih luas dengan harga yang adil.
@@ -305,17 +428,19 @@
               </div>
             </div>
           </section>
+
+          <!-- TEAM -->
           <section
             class="px-4 sm:px-10 lg:px-20 py-16 sm:py-24 bg-white dark:bg-background-dark/50"
             id="team"
           >
             <div class="max-w-5xl mx-auto">
               <div class="text-center mb-12">
-                <h1
+                <h2
                   class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight md:text-4xl"
                 >
                   Tim Kami
-                </h1>
+                </h2>
                 <p
                   class="text-text-light dark:text-text-dark text-lg font-normal leading-normal mt-4 max-w-3xl mx-auto"
                 >
@@ -324,12 +449,14 @@
                 </p>
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <!-- FOTO 1: ALDO -->
-                <div class="flex flex-col items-center text-center">
+                <!-- Aldo -->
+                <div
+                  class="flex flex-col items-center text-center bg-background-light dark:bg-background-dark rounded-xl p-6 border border-gray-200 dark:border-gray-700"
+                >
                   <img
                     class="rounded-full size-32 object-cover"
-                    src="aldo.jpg"
-                    alt="Kornelius Aldo Praditya"
+                    alt="Foto profesional Kornelius Aldo Praditya"
+                    src="./aldo.jpg"
                   />
                   <h3
                     class="text-text-light dark:text-text-dark text-lg font-bold mt-4"
@@ -337,44 +464,48 @@
                     Kornelius Aldo Praditya
                   </h3>
                   <p class="text-gray-600 dark:text-gray-400 text-sm">
-                    Orang ganteng#2
+                    Superman
                   </p>
                 </div>
-                <!-- FOTO 2: GALANG -->
-                <div class="flex flex-col items-center text-center">
+
+                <!-- Galang -->
+                <div
+                  class="flex flex-col items-center text-center bg-background-light dark:bg-background-dark rounded-xl p-6 border border-gray-200 dark:border-gray-700"
+                >
                   <img
                     class="rounded-full size-32 object-cover"
-                    src="galang.jpg"
-                    alt="Galang Saktiari"
+                    alt="Foto profesional Galang Saktiari"
+                    src="./galang.jpg"
                   />
                   <h3
                     class="text-text-light dark:text-text-dark text-lg font-bold mt-4"
                   >
                     Galang Saktiari
                   </h3>
-                  <p class="text-gray-600 dark:text-gray-400 text-sm">
-                    Orang ganteng#1
-                  </p>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm">Batman</p>
                 </div>
-                <!-- FOTO 3: RIAN -->
-                <div class="flex flex-col items-center text-center">
+
+                <!-- Ryan -->
+                <div
+                  class="flex flex-col items-center text-center bg-background-light dark:bg-background-dark rounded-xl p-6 border border-gray-200 dark:border-gray-700"
+                >
                   <img
                     class="rounded-full size-32 object-cover"
-                    src="rian.jpg"
-                    alt="Ryan Linardi"
+                    alt="Foto profesional Ryan Linardi"
+                    src="./rian.jpg"
                   />
                   <h3
                     class="text-text-light dark:text-text-dark text-lg font-bold mt-4"
                   >
                     Ryan Linardi
                   </h3>
-                  <p class="text-gray-600 dark:text-gray-400 text-sm">
-                    Orang ganteng#3
-                  </p>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm">Flash</p>
                 </div>
               </div>
             </div>
           </section>
+
+          <!-- FOOTER / CONTACT -->
           <footer
             class="bg-primary/90 dark:bg-primary/50 text-white"
             id="contact"
@@ -383,25 +514,30 @@
               <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="col-span-1 md:col-span-2">
                   <h3 class="text-xl font-bold">JalaKU</h3>
-                  <p class="mt-2 text-sm text-white/80 max-w-sm">
+                  <p
+                    class="mt-2 text-sm text-white/80 max-w-sm leading-relaxed"
+                  >
                     Merevolusi cara Anda membeli ikan segar, langsung dari
                     sumbernya. Unduh aplikasi kami dan rasakan bedanya.
                   </p>
                   <div class="flex gap-4 mt-4">
-                    <a href="#"
-                      ><img
+                    <a href="#">
+                      <img
                         class="h-10"
-                        data-alt="Download on the App Store button"
+                        alt="Tombol Download di App Store"
                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvdRNh5XHOJafpKFMNPYb6IHyYeqvnQ0hDqfp_xSYa893dsIbEFmsZZnI8ik-4iI3hTKGszjoxoQOLRSe0gNlqmgA-ZCJQIfNMQECHTtP9GVEE3lqNn8rG2i99kXjRnwz4Id981eORIOAOmHfuzpf9AAS9bQbBbeZSllBnYnz6i6qOOQtdT4QHEhURjgEvLAswyE86Irouf_htJAzb_YB2f8CVEtFOLnI4I4QFL1BwyZaFQ7JhymUBKheL2Obi9iKkp4Exp_UYYtg"
-                    /></a>
-                    <a href="#"
-                      ><img
+                      />
+                    </a>
+                    <a href="#">
+                      <img
                         class="h-10"
-                        data-alt="Get it on Google Play button"
+                        alt="Tombol Get it on Google Play"
                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxG87DlKAUka2IHt_w43iEcycy7sIazTNrotPAe5hlCr-EOuhmv_VViWReiqHCKawxOwuHQLPWClo0LH2PhJPnu3wkeh3tonzA8QMD9wKRErxO2KGxmuWhjcPeR-gzZF0HtWI1Ta2rKA49zWKV1P8zsmW4AdJWJPLBrKYWw3izFZAdevdWMjjwIIuhdI4eyioAGFvIOWgGhHcd2GdEnZ-gXdhtfLKVpasHxLwR67F4GQ3X9HWOTvpam7u4ZimWJgxmtwQs8KGTuG8"
-                    /></a>
+                      />
+                    </a>
                   </div>
                 </div>
+
                 <div>
                   <h4 class="font-bold tracking-wider uppercase">Tautan</h4>
                   <ul class="mt-4 space-y-2 text-sm">
@@ -409,25 +545,26 @@
                       <a
                         class="hover:underline text-white/80 hover:text-white"
                         href="#features"
-                        >Features</a
+                        >Fitur</a
                       >
                     </li>
                     <li>
                       <a
                         class="hover:underline text-white/80 hover:text-white"
                         href="#advantages"
-                        >Advantages</a
+                        >Keunggulan</a
                       >
                     </li>
                     <li>
                       <a
                         class="hover:underline text-white/80 hover:text-white"
                         href="#team"
-                        >Team</a
+                        >Tim</a
                       >
                     </li>
                   </ul>
                 </div>
+
                 <div>
                   <h4 class="font-bold tracking-wider uppercase">Kontak</h4>
                   <ul class="mt-4 space-y-2 text-sm text-white/80">
@@ -435,7 +572,7 @@
                       <a
                         class="hover:underline hover:text-white"
                         href="mailto:contact@jalaku.com"
-                        >instagram:@jalaku.smg</a
+                        >Instagram:@jalaku.smg</a
                       >
                     </li>
                     <li>
@@ -447,7 +584,7 @@
                     </li>
                   </ul>
                   <div class="flex space-x-4 mt-4 text-white/80">
-                    <a class="hover:text-white" href="#">
+                    <a class="hover:text-white" href="#" aria-label="Facebook">
                       <svg
                         aria-hidden="true"
                         class="size-6"
@@ -455,13 +592,13 @@
                         viewBox="0 0 24 24"
                       >
                         <path
+                          fill-rule="evenodd"
                           clip-rule="evenodd"
                           d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                          fill-rule="evenodd"
                         ></path>
                       </svg>
                     </a>
-                    <a class="hover:text-white" href="#">
+                    <a class="hover:text-white" href="#" aria-label="Instagram">
                       <svg
                         aria-hidden="true"
                         class="size-6"
@@ -469,13 +606,13 @@
                         viewBox="0 0 24 24"
                       >
                         <path
-                          clip-rule="evenodd"
-                          d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.465c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0-2a7 7 0 110 14 7 7 0 010-14zm6.406-2a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"
                           fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427C4.013 14.784 4 14.43 4 12s.013-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 017.45 2.465c.636-.247 1.363-.416 2.427-.465C10.53 2.013 10.884 2 13.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm6.406-2a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"
                         ></path>
                       </svg>
                     </a>
-                    <a class="hover:text-white" href="#">
+                    <a class="hover:text-white" href="#" aria-label="Twitter">
                       <svg
                         aria-hidden="true"
                         class="size-6"
@@ -500,5 +637,30 @@
         </main>
       </div>
     </div>
+
+    <!-- Script kecil untuk toggle dark mode & mobile menu -->
+    <script>
+      const htmlEl = document.documentElement;
+      const themeToggle = document.getElementById("themeToggle");
+      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      // Dark mode toggle
+      themeToggle?.addEventListener("click", () => {
+        htmlEl.classList.toggle("dark");
+      });
+
+      // Mobile nav toggle
+      mobileMenuButton?.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Tutup menu mobile setelah klik link
+      mobileMenu?.querySelectorAll("a").forEach((link) =>
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        })
+      );
+    </script>
   </body>
 </html>
